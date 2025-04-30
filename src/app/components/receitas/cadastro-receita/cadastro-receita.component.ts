@@ -12,6 +12,7 @@ export class CadastroReceitaComponent {
   proximoId: number = 0;
 
   // idParaEditar é uma variável do tipo number que é nullable, ou seja, ela pode ou nao ter valor
+  // ? significa que é nullable
   idParaEditar?: number;
 
   nome: string= "";
