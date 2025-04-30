@@ -7,6 +7,5 @@ export class Receita{
         this.id = id;
         this.nome = nome;
         this.valor = valor;
-    }
-    
+    }    
 }
