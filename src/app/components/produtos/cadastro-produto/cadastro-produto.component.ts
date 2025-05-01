@@ -16,6 +16,7 @@ export class CadastroProdutoComponent {
   idParaEditar?: number;
   categoria: string = "";
   quantidade: number = 0;
+  preco_unitario: number = 0;
 
   salvarProduto() {
     if (this.nome.length < 3) {
@@ -39,6 +40,17 @@ export class CadastroProdutoComponent {
   // || é condição OU mas que é usada assim no TS e no JS
   // isNaN verifica se variável não é um número válido
 
+  let preco_unitario = parseFloat(this.preco_unitario.toString().replace(",", "."));
+  if (Number.isNaN(preco_unitario)) {
+    alert("Valor deve ser um número real");
+    return;
+  }
+  
+  if (preco_unitario <= 0) {
+    alert("Valor deve ser maior que R$ 0,00");
+    return;
+  }
+
   if (this.idParaEditar == undefined) {
     this.cadastrarProduto();
   } else {
@@ -51,6 +63,7 @@ export class CadastroProdutoComponent {
     this.produtos[indiceProduto].nome = this.nome;
     this.produtos[indiceProduto].categoria = this.categoria;
     this.produtos[indiceProduto].quantidade = this.quantidade;
+    this.produtos[indiceProduto].preco_unitario = this.preco_unitario;
 
     this.idParaEditar = undefined;
   }
@@ -61,7 +74,8 @@ export class CadastroProdutoComponent {
         this.proximoId, 
         this.nome, 
         this.categoria, 
-        this.quantidade);
+        this.quantidade,
+        this.preco_unitario);
   
     this.produtos.push(produto);
     
@@ -72,6 +86,7 @@ export class CadastroProdutoComponent {
     this.categoria = produto.categoria;
     this.idParaEditar = produto.id;
     this.quantidade = produto.quantidade;
+    this.preco_unitario = produto.preco_unitario;
   }
 
   apagar(produto: Produto) {

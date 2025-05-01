@@ -7,7 +7,6 @@
                 <label for="campo-nome">Nome</label>
                 <input type="text" id="campo-nome" placeholder="Digite um texto" [(ngModel)]="nome">
             </div>
-
             <div>
                 <label for="campo-categoria">Categoria</label>
                 <select id="campo-categoria" name="categoria" [(ngModel)]="categoria">
@@ -21,10 +20,13 @@
                     <option value="outros_receita">Outras Receitas</option>
                 </select>
             </div>
-
             <div>
                 <label for="campo-quantidade">Quantidade</label>
                 <input type="number" id="campo-quantidade" min="1" [(ngModel)]="quantidade">
+            </div>
+            <div>
+                <label for="preco_unitario">Preço Unitário</label>
+                <input type="number" id="quantidade" name="quantidade" [(ngModel)]="preco_unitario">
             </div>
 
             <button (click)="salvarProduto()">Salvar</button>
@@ -37,7 +39,8 @@
                         <th>Código</th>
                         <th>Nome</th> 
                         <th>Categoria</th> 
-                        <th>Quantidade</th>                     
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>                     
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +50,7 @@
                         <td>{{produto.nome}}</td>
                         <td>{{produto.categoria}}</td>
                         <td>{{produto.quantidade}}</td>
+                        <td>{{produto.preco_unitario}}</td>
                         <td>
                             <button (click)="editar(produto)">Editar</button>
                             <button (click)="apagar(produto)">Apagar</button>
