@@ -8,6 +8,25 @@
                 <input type="text" id="campo-nome" placeholder="Digite um texto" [(ngModel)]="nome">
             </div>
 
+            <div>
+                <label for="campo-categoria">Categoria</label>
+                <select id="campo-categoria" name="categoria" [(ngModel)]="categoria">
+                    <option value="venda_produto">Venda de Produto</option>
+                    <option value="servico">Prestação de Serviço</option>
+                    <option value="assinatura">Assinaturas e Planos</option>
+                    <option value="consultoria">Consultoria</option>
+                    <option value="licenciamento">Licenciamento de Software</option>
+                    <option value="manutencao">Manutenção Técnica</option>
+                    <option value="frete">Frete Recebido</option>
+                    <option value="outros_receita">Outras Receitas</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="campo-quantidade">Quantidade</label>
+                <input type="number" id="campo-quantidade" min="1" [(ngModel)]="quantidade">
+            </div>
+
             <button (click)="salvarProduto()">Salvar</button>
 
         </div>
@@ -16,7 +35,9 @@
                 <thead>
                     <tr>
                         <th>Código</th>
-                        <th>Nome</th>                       
+                        <th>Nome</th> 
+                        <th>Categoria</th> 
+                        <th>Quantidade</th>                     
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +45,8 @@
                     <tr>
                         <td>{{produto.id}}</td>
                         <td>{{produto.nome}}</td>
+                        <td>{{produto.categoria}}</td>
+                        <td>{{produto.quantidade}}</td>
                         <td>
                             <button (click)="editar(produto)">Editar</button>
                             <button (click)="apagar(produto)">Apagar</button>
