@@ -17,6 +17,7 @@ export class CadastroProdutoComponent {
   categoria: string = "";
   quantidade: number = 0;
   preco_unitario: number = 0;
+  vencido: string = "";
 
   salvarProduto() {
     if (this.nome.length < 3) {
@@ -51,6 +52,11 @@ export class CadastroProdutoComponent {
     return;
   }
 
+  if (this.vencido.trim() === "") {
+    alert("Selecione se o produto está vencido");
+    return;
+  }
+
   if (this.idParaEditar == undefined) {
     this.cadastrarProduto();
   } else {
@@ -64,6 +70,7 @@ export class CadastroProdutoComponent {
     this.produtos[indiceProduto].categoria = this.categoria;
     this.produtos[indiceProduto].quantidade = this.quantidade;
     this.produtos[indiceProduto].preco_unitario = this.preco_unitario;
+    this.produtos[indiceProduto].vencido = this.vencido;
 
     this.idParaEditar = undefined;
   }
@@ -75,7 +82,8 @@ export class CadastroProdutoComponent {
         this.nome, 
         this.categoria, 
         this.quantidade,
-        this.preco_unitario);
+        this.preco_unitario,
+        this.vencido);
   
     this.produtos.push(produto);
     
@@ -87,6 +95,7 @@ export class CadastroProdutoComponent {
     this.idParaEditar = produto.id;
     this.quantidade = produto.quantidade;
     this.preco_unitario = produto.preco_unitario;
+    this.vencido = produto.vencido;
   }
 
   apagar(produto: Produto) {
