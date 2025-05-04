@@ -28,6 +28,17 @@
                 <label for="preco_unitario">Preço Unitário</label>
                 <input type="number" id="quantidade" name="quantidade" [(ngModel)]="preco_unitario">
             </div>
+            <div class="form-group">
+                <label>Vencido</label>
+                <input type="radio" name="vencido" [(ngModel)]="vencido" value="sim">
+                SIM
+                <input type="radio" name="vencido" [(ngModel)]="vencido" value="NAO">
+                NÃO
+            </div>
+            <div>
+                <label for="estoque">Estoque</label>
+                <input type="checkbox" id="estoque" name="estoque" [(ngModel)]="estoque">
+            </div>
 
             <button (click)="salvarProduto()">Salvar</button>
 
@@ -40,7 +51,9 @@
                         <th>Nome</th> 
                         <th>Categoria</th> 
                         <th>Quantidade</th>
-                        <th>Preço Unitário</th>                     
+                        <th>Preço Unitário</th> 
+                        <th>Vencido</th>
+                        <th>Estoque</th>                    
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +64,8 @@
                         <td>{{produto.categoria}}</td>
                         <td>{{produto.quantidade}}</td>
                         <td>{{produto.preco_unitario}}</td>
+                        <td>{{produto.vencido}}</td>
+                        <td>{{produto.estoque}}</td>
                         <td>
                             <button (click)="editar(produto)">Editar</button>
                             <button (click)="apagar(produto)">Apagar</button>
